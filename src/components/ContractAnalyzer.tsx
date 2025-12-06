@@ -144,12 +144,12 @@ export default function ContractAnalyzer({ initialAddress, onClearAddress }: Con
             animate={{ opacity: 1, height: "auto" }}
             className="mt-4"
           >
-            <div className="text-xs text-zinc-500 mb-2">Try these Mantle contracts:</div>
+            <div className="text-xs text-zinc-500 mb-2">Try analyzing X1 EcoChain contracts (examples coming soon):</div>
             <div className="flex flex-wrap gap-2">
               {[
-                { name: "USDT", addr: "0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE" },
-                { name: "WETH", addr: "0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111" },
-                { name: "USDC", addr: "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9" },
+                { name: "Example 1", addr: "0x0000000000000000000000000000000000000001" },
+                { name: "Example 2", addr: "0x0000000000000000000000000000000000000002" },
+                { name: "Example 3", addr: "0x0000000000000000000000000000000000000003" },
               ].map((example) => (
                 <button
                   key={example.addr}
@@ -312,8 +312,8 @@ export default function ContractAnalyzer({ initialAddress, onClearAddress }: Con
               className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6"
             >
               <div className="flex items-center gap-2 mb-4">
-                <Zap className="w-5 h-5 text-blue-400" />
-                <h3 className="font-semibold text-lg">Mantle Optimization Tips</h3>
+                <Zap className="w-5 h-5 text-emerald-400" />
+                <h3 className="font-semibold text-lg">X1 EcoChain Optimization Tips</h3>
               </div>
               <div className="space-y-2">
                 {result.analysis.recommendations.map((rec, idx) => (

@@ -22,13 +22,13 @@ export const x1EcoChain = defineChain({
     },
   },
   blockExplorers: {
-    default: { name: 'X1 Explorer', url: 'https://explorer.x1.xen.network' },
+    default: { name: 'X1 Scan', url: 'https://maculatus-scan.x1eco.com' },
   },
 });
 
-// Define X1 Testnet
+// Define X1 Testnet (Devnet)
 export const x1Testnet = defineChain({
-  id: 204005,
+  id: 10778,
   name: 'X1 Testnet',
   network: 'x1-testnet',
   nativeCurrency: {

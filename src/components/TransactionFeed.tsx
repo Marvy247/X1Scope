@@ -179,7 +179,7 @@ export default function TransactionFeed() {
                       <div className="grid grid-cols-3 gap-3 text-xs">
                         <div className="bg-zinc-800/30 rounded-lg p-2">
                           <div className="text-zinc-500 mb-1">Value</div>
-                          <div className="text-white font-semibold truncate">{tx.value} MNT</div>
+                          <div className="text-white font-semibold truncate">{tx.value} XN</div>
                         </div>
                         <div className="bg-zinc-800/30 rounded-lg p-2">
                           <div className="text-zinc-500 mb-1">Gas Used</div>
@@ -194,15 +194,15 @@ export default function TransactionFeed() {
                       {/* Actions */}
                       <div className="mt-3 pt-3 border-t border-zinc-800/50 flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <motion.a
-                          href={`https://explorer.mantle.xyz/tx/${tx.hash}`}
+                          href={`https://maculatus-scan.x1eco.com/tx/${tx.hash}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-lg text-xs font-medium transition-colors"
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded-lg text-xs font-medium transition-colors"
                         >
                           <ExternalLink className="w-3 h-3" />
-                          View on Explorer
+                          View on X1 Scan
                         </motion.a>
                       </div>
                     </div>

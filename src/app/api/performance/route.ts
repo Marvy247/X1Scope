@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { mantleService } from "@/lib/blockchain";
+import { x1Service } from "@/lib/blockchain";
 
 interface PerformanceData {
   timestamp: number;
@@ -25,8 +25,8 @@ export async function GET(request: Request) {
       return NextResponse.json(performanceCache);
     }
 
-    // Fetch historical block data from Mantle
-    const historicalBlocks = await mantleService.getHistoricalBlocks(24);
+    // Fetch historical block data from X1 EcoChain
+    const historicalBlocks = await x1Service.getHistoricalBlocks(24);
     
     const dataPoints: PerformanceData[] = [];
     
@@ -86,7 +86,7 @@ export async function GET(request: Request) {
     }
     
     return NextResponse.json(
-      { error: "Failed to fetch performance data from Mantle RPC" },
+      { error: "Failed to fetch performance data from X1 EcoChain RPC" },
       { status: 500 }
     );
   }

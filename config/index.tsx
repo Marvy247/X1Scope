@@ -13,12 +13,12 @@ export const x1EcoChain = defineChain({
     public: { http: ['https://x1-mainnet.xen.network'] },
   },
   blockExplorers: {
-    default: { name: 'X1 Explorer', url: 'https://explorer.x1.xen.network' },
+    default: { name: 'X1 Scan', url: 'https://maculatus-scan.x1eco.com' },
   },
 })
 
 export const x1Testnet = defineChain({
-  id: 204005, // Note: X1 testnet uses same chain ID convention
+  id: 10778, // X1 Devnet/Testnet chain ID
   name: 'X1 Testnet',
   nativeCurrency: { name: 'XN', symbol: 'XN', decimals: 18 },
   rpcUrls: {

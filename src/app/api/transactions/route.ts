@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { mantleService } from "@/lib/blockchain";
+import { x1Service } from "@/lib/blockchain";
 
 interface Transaction {
   hash: string;
@@ -33,9 +33,9 @@ export async function GET(request: Request) {
       });
     }
 
-    // Fetch real transactions from Mantle blockchain
-    const recentTxs = await mantleService.getRecentTransactions(limit);
-    const blockNumber = await mantleService.getBlockNumber();
+    // Fetch real transactions from X1 EcoChain blockchain
+    const recentTxs = await x1Service.getRecentTransactions(limit);
+    const blockNumber = await x1Service.getBlockNumber();
 
     // Classify transaction types based on 'to' field and value
     const transactions: Transaction[] = recentTxs.map((tx: any) => {
@@ -85,7 +85,7 @@ export async function GET(request: Request) {
     }
     
     return NextResponse.json(
-      { error: "Failed to fetch transactions from Mantle RPC" }, 
+      { error: "Failed to fetch transactions from X1 EcoChain RPC" }, 
       { status: 500 }
     );
   }
