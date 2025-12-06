@@ -1,56 +1,58 @@
 import { createPublicClient, http, Block, Transaction, formatEther, formatGwei } from 'viem';
 import { defineChain } from 'viem';
 
-// Define Mantle Network
-export const mantle = defineChain({
-  id: 5000,
-  name: 'Mantle',
-  network: 'mantle',
+// Define X1 EcoChain Network
+// Energy-efficient L1 blockchain with Proof of Authority (PoA) consensus
+// ~3W power consumption per node, ultra-low fees, ~7.5s block time
+export const x1EcoChain = defineChain({
+  id: 204005,
+  name: 'X1 EcoChain',
+  network: 'x1-ecochain',
   nativeCurrency: {
     decimals: 18,
-    name: 'Mantle',
-    symbol: 'MNT',
+    name: 'XN',
+    symbol: 'XN',
   },
   rpcUrls: {
     default: {
-      http: ['https://rpc.mantle.xyz'],
+      http: ['https://204005.rpc.thirdweb.com'],
     },
     public: {
-      http: ['https://rpc.mantle.xyz'],
+      http: ['https://x1-mainnet.xen.network'],
     },
   },
   blockExplorers: {
-    default: { name: 'Explorer', url: 'https://explorer.mantle.xyz' },
+    default: { name: 'X1 Explorer', url: 'https://explorer.x1.xen.network' },
   },
 });
 
-// Define Mantle Testnet (Sepolia)
-export const mantleTestnet = defineChain({
-  id: 5003,
-  name: 'Mantle Sepolia Testnet',
-  network: 'mantle-sepolia',
+// Define X1 Testnet
+export const x1Testnet = defineChain({
+  id: 204005,
+  name: 'X1 Testnet',
+  network: 'x1-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Mantle',
-    symbol: 'MNT',
+    name: 'XN',
+    symbol: 'XN',
   },
   rpcUrls: {
     default: {
-      http: ['https://rpc.sepolia.mantle.xyz'],
+      http: ['https://x1-testnet.xen.network'],
     },
     public: {
-      http: ['https://rpc.sepolia.mantle.xyz'],
+      http: ['https://x1-testnet.xen.network'],
     },
   },
   blockExplorers: {
-    default: { name: 'Explorer', url: 'https://explorer.sepolia.mantle.xyz' },
+    default: { name: 'X1 Testnet Explorer', url: 'https://explorer.x1-testnet.xen.network' },
   },
 });
 
-// Create public client for Mantle
+// Create public client for X1 EcoChain
 export const publicClient = createPublicClient({
-  chain: mantle,
-  transport: http('https://rpc.mantle.xyz', {
+  chain: x1EcoChain,
+  transport: http('https://204005.rpc.thirdweb.com', {
     batch: true,
     timeout: 30_000,
   }),
@@ -58,16 +60,16 @@ export const publicClient = createPublicClient({
 
 // Create testnet client
 export const testnetClient = createPublicClient({
-  chain: mantleTestnet,
-  transport: http('https://rpc.sepolia.mantle.xyz', {
+  chain: x1Testnet,
+  transport: http('https://x1-testnet.xen.network', {
     batch: true,
     timeout: 30_000,
   }),
 });
 
-// Blockchain Service Functions
+// Blockchain Service Functions for X1 EcoChain
 
-export class MantleBlockchainService {
+export class X1BlockchainService {
   private client: ReturnType<typeof createPublicClient>;
 
   constructor(useTestnet = false) {
@@ -267,5 +269,5 @@ export class MantleBlockchainService {
 }
 
 // Singleton instance
-export const mantleService = new MantleBlockchainService(false);
-export const mantleTestnetService = new MantleBlockchainService(true);
+export const x1Service = new X1BlockchainService(false);
+export const x1TestnetService = new X1BlockchainService(true);

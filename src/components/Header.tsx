@@ -30,10 +30,10 @@ export default function Header({ onSearch }: HeaderProps) {
               <Activity className="w-8 h-8 text-blue-400 relative" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                MantleScope
+              <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                X1Scope
               </h1>
-              <p className="text-xs text-zinc-400">Real-time Network Intelligence</p>
+              <p className="text-xs text-zinc-400">Energy-Efficient Blockchain Observatory</p>
             </div>
           </div>
           
@@ -49,7 +49,7 @@ export default function Header({ onSearch }: HeaderProps) {
             <AlertsPanel />
             
             <motion.a
-              href="https://github.com/yourusername/mantle-observatory"
+              href="https://github.com/marvy247/x1scope"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

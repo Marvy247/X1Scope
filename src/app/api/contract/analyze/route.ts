@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { mantleService } from "@/lib/blockchain";
+import { x1Service } from "@/lib/blockchain";
 import { isAddress } from "viem";
 
 export async function POST(request: Request) {
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     }
 
     // Analyze the contract
-    const contractData = await mantleService.analyzeContract(address as `0x${string}`);
+    const contractData = await x1Service.analyzeContract(address as `0x${string}`);
 
     if (!contractData.isContract) {
       return NextResponse.json(
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     const analysis = analyzeBytecodePatterns(contractData.bytecode);
     
     // Get recent transactions
-    const latestBlock = await mantleService.getLatestBlock();
+    const latestBlock = await x1Service.getLatestBlock();
     const contractTransactions = latestBlock.transactions
       ? (latestBlock.transactions as any[]).filter(
           (tx) => typeof tx !== 'string' && (tx.to?.toLowerCase() === address.toLowerCase() || tx.from?.toLowerCase() === address.toLowerCase())
@@ -129,12 +129,13 @@ function analyzeBytecodePatterns(bytecode: string) {
     score -= 5;
   }
 
-  // Mantle-specific optimizations
-  analysis.recommendations.push("Use batch transactions to leverage Mantle's DA layer efficiency");
-  analysis.recommendations.push("Optimize storage reads - DA layer costs are lower");
+  // X1 EcoChain-specific optimizations
+  analysis.recommendations.push("Leverage X1's PoA consensus for predictable gas costs and instant finality");
+  analysis.recommendations.push("Optimize for X1's ~3W energy-efficient nodes - simpler logic = greener execution");
+  analysis.recommendations.push("Use X1's ultra-low fees (~$0.01 avg) to enable micro-transactions");
   
   if (analysis.hasProxy) {
-    analysis.recommendations.push("Consider Mantle's native upgradability features");
+    analysis.recommendations.push("Consider X1's native upgradability features and PoA validator trust model");
   }
 
   analysis.gasOptimizationScore = Math.max(0, Math.min(100, score));

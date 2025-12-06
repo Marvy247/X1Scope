@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { mantleService } from "@/lib/blockchain";
+import { x1Service } from "@/lib/blockchain";
 
 // Cache for metrics to avoid overwhelming the RPC
 let metricsCache: any = null;
@@ -15,9 +15,9 @@ export async function GET() {
       return NextResponse.json(metricsCache);
     }
 
-    // Fetch real data from Mantle blockchain
-    const networkMetrics = await mantleService.getNetworkMetrics();
-    const avgBlockTime = await mantleService.getAverageBlockTime(50);
+    // Fetch real data from X1 EcoChain blockchain
+    const networkMetrics = await x1Service.getNetworkMetrics();
+    const avgBlockTime = await x1Service.getAverageBlockTime(50);
 
     // Calculate changes (simulate for now, would need historical DB for real changes)
     const tpsChange = (Math.random() * 20 - 10).toFixed(1);
@@ -61,7 +61,7 @@ export async function GET() {
     }
     
     return NextResponse.json(
-      { error: "Failed to fetch metrics from Mantle RPC" }, 
+      { error: "Failed to fetch metrics from X1 EcoChain RPC" }, 
       { status: 500 }
     );
   }
